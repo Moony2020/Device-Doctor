@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilreparation - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .page-header {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-action {
+            background: #d63384;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .brand-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .brand-card img {
+            max-height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .brand-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .reasons-section {
+            background: white;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .reason-item i {
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .reason-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .reason-item p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .info-text {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><i class="ri-arrow-left-line"></i> Tillbaka</a>
+            <h1>Mobilreparation</h1>
+            <div style="width: 50px;"></div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Express Mobile Phone Repairs</h1>
+        <a href="#brands" class="btn-action">Välj Din Enhet</a>
+    </div>
+
+    <!-- Intro Text -->
+    <div class="section-container">
+        <div class="info-text">
+            <h3>ValfriMobil Smartphone repair service:</h3>
+            <p>Vi är experter på telefoner. Oavsett om det är en sprucken skärm, dåligt batteri eller vattenskada, så
+                hjälper vi dig. Våra tekniker är certifierade och vi använder endast reservdelar av högsta kvalitet.</p>
+        </div>
+
+        <h2 id="brands" style="color:var(--secondary-color);">Välj Ditt Märke</h2>
+        <div class="brand-grid">
+            <div class="brand-card" onclick="location.href='booking.html?brand=Apple'">
+                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=300&q=80"
+                    alt="iPhone">
+                <h3>Apple</h3>
+            </div>
+            <div class="brand-card" onclick="location.href='booking.html?brand=Samsung'">
+                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=300&q=80"
+                    alt="Samsung">
+                <h3>Samsung</h3>
+            </div>
+            <div class="brand-card" onclick="location.href='booking.html?brand=Google'">
+                <img src="https://images.unsplash.com/photo-1598327773204-3c306d152a54?auto=format&fit=crop&w=300&q=80"
+                    alt="Google">
+                <h3>Google</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 Reasons -->
+    <div class="reasons-section text-center">
+        <h2 style="color: #d63384;">6 Skäl att välja ValfriMobil</h2>
+        <div class="reasons-grid">
+            <div class="reason-item">
+                <i class="ri-thumb-up-line"></i>
+                <h4>Prisgaranti</h4>
+                <p>Vi matchar priset</p>
+            </div>
+            <div class="reason-item">
+                <i class="ri-flashlight-line"></i>
+                <h4>Express Service</h4>
+                <p>Klar på 30 min</p>
+            </div>
+            <div class="reason-item">
+                <i class="ri-shield-check-line"></i>
+                <h4>Livstidsgaranti</h4>
+                <p>På skärmbyten</p>
+            </div>
+            <div class="reason-item">
+                <i class="ri-settings-4-line"></i>
+                <h4>Certifierad</h4>
+                <p>Utbildade tekniker</p>
+            </div>
+            <div class="reason-item">
+                <i class="ri-user-smile-line"></i>
+                <h4>50k+ Kunder</h4>
+                <p>Nöjda kunder</p>
+            </div>
+            <div class="reason-item">
+                <i class="ri-recycle-line"></i>
+                <h4>Hållbart</h4>
+                <p>Miljövänligt val</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer placeholder (optional or include via JS, but keeping simple valid HTML) -->
+    <footer style="margin-top:0;"></footer>
+
+</body>
+
+</html>

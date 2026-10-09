@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renoverade Enheter - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .refurb-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        /* Sidebar */
+        .sidebar-filters {
+            flex: 0 0 250px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            height: fit-content;
+            border: 1px solid #eee;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group h4 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .filter-item input {
+            margin-right: 10px;
+        }
+
+        /* Grid */
+        .products-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .product-img {
+            height: 250px;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-img img {
+            max-height: 80%;
+        }
+
+        .badge-save {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #d63384;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .brand {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .model {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 5px 0 10px;
+            color: #333;
+        }
+
+        .colors {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .color-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+        }
+
+        .features {
+            background: #1a0b2e;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+
+        .features div {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .features i {
+            color: #d63384;
+            margin-right: 8px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d63384;
+            margin-top: 10px;
+        }
+
+        .btn-view {
+            width: 100%;
+            background: #1a0b2e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-view:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><i class="ri-arrow-left-line"></i> Tillbaka</a>
+            <h1>Renoverade Enheter</h1>
+            <div style="width: 50px;"></div>
+        </nav>
+    </header>
+
+    <div class="refurb-container">
+        <!-- Sidebar -->
+        <aside class="sidebar-filters">
+            <div class="filter-group">
+                <h4>Märke</h4>
+                <label class="filter-item"><input type="checkbox"> Apple</label>
+                <label class="filter-item"><input type="checkbox"> Samsung</label>
+            </div>
+            <div class="filter-group">
+                <h4>Modell</h4>
+                <label class="filter-item"><input type="checkbox"> iPhone 14</label>
+                <label class="filter-item"><input type="checkbox"> iPhone 13</label>
+                <label class="filter-item"><input type="checkbox"> Galaxy S23</label>
+            </div>
+            <div class="filter-group">
+                <h4>Skick</h4>
+                <label class="filter-item"><input type="checkbox"> Som Ny (Pristine)</label>
+                <label class="filter-item"><input type="checkbox"> Mycket Bra</label>
+                <label class="filter-item"><input type="checkbox"> Bra</label>
+            </div>
+            <button class="btn-hero" style="width:100%; font-size:0.9rem;">Filtrera</button>
+        </aside>
+
+        <!-- Products -->
+        <main class="products-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="badge-save">Spara 1500 kr</span>
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=300&q=80"
+                        alt="iPhone 14">
+                </div>
+                <div class="product-info">
+                    <div class="brand">Apple</div>
+                    <div class="model">iPhone 14 Pro</div>
+                    <div class="colors">
+                        <div class="color-dot" style="background:black;"></div>
+                        <div class="color-dot" style="background:#555;"></div>
+                        <div class="color-dot" style="background:#fdd;"></div>
+                    </div>
+
+                    <div class="features">
+                        <div><i class="ri-truck-line"></i> Fri Frakt</div>
+                        <div><i class="ri-shield-star-line"></i> 24 Mån Garanti</div>
+                        <div><i class="ri-battery-charge-line"></i> Nytt Batteri</div>
+                    </div>
+
+                    <div class="price">Från 7490 kr</div>
+                    <button class="btn-view">Välj Alternativ</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="badge-save">Spara 2000 kr</span>
+                    <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=300&q=80"
+                        alt="iPhone 15">
+                </div>
+                <div class="product-info">
+                    <div class="brand">Apple</div>
+                    <div class="model">iPhone 15</div>
+                    <div class="colors">
+                        <div class="color-dot" style="background:#pink;"></div>
+                        <div class="color-dot" style="background:#blue;"></div>
+                    </div>
+
+                    <div class="features">
+                        <div><i class="ri-truck-line"></i> Fri Frakt</div>
+                        <div><i class="ri-shield-star-line"></i> 24 Mån Garanti</div>
+                        <div><i class="ri-battery-charge-line"></i> Nytt Batteri</div>
+                    </div>
+
+                    <div class="price">Från 8990 kr</div>
+                    <button class="btn-view">Välj Alternativ</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=300&q=80"
+                        alt="Samsung S23">
+                </div>
+                <div class="product-info">
+                    <div class="brand">Samsung</div>
+                    <div class="model">Galaxy S23 Ultra</div>
+                    <div class="colors">
+                        <div class="color-dot" style="background:black;"></div>
+                        <div class="color-dot" style="background:green;"></div>
+                    </div>
+
+                    <div class="features">
+                        <div><i class="ri-truck-line"></i> Fri Frakt</div>
+                        <div><i class="ri-shield-star-line"></i> 24 Mån Garanti</div>
+                    </div>
+
+                    <div class="price">Från 6990 kr</div>
+                    <button class="btn-view">Välj Alternativ</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="badge-save">Spara 800 kr</span>
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=300&q=80"
+                        alt="Dator">
+                </div>
+                <div class="product-info">
+                    <div class="brand">Apple</div>
+                    <div class="model">MacBook Air M1</div>
+                    <div class="colors">
+                        <div class="color-dot" style="background:silver;"></div>
+                        <div class="color-dot" style="background:gray;"></div>
+                    </div>
+
+                    <div class="features">
+                        <div><i class="ri-truck-line"></i> Fri Frakt</div>
+                        <div><i class="ri-shield-star-line"></i> 12 Mån Garanti</div>
+                    </div>
+
+                    <div class="price">Från 7990 kr</div>
+                    <button class="btn-view">Välj Alternativ</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boka Reparation - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .booking-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-color);
+        }
+
+        .files-box {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><i class="ri-arrow-left-line"></i> Tillbaka</a>
+            <h1>Boka Din Reparation</h1>
+            <div style="width: 50px;"></div>
+        </nav>
+    </header>
+
+    <div class="booking-container">
+        <form id="bookingForm" enctype="multipart/form-data">
+
+            <div class="form-section">
+                <h3>1. Enhetsinformation</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Enhetstyp</label>
+                        <select id="deviceType" name="deviceType" required>
+                            <option value="">Välj enhet...</option>
+                            <option value="Phone">Mobiltelefon</option>
+                            <option value="Tablet">Surfplatta</option>
+                            <option value="Laptop">Dator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Märke</label>
+                        <input type="text" id="brand" name="brand" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Modell</label>
+                    <input type="text" id="model" name="model">
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Ladda upp bild på skadan (Valfritt)</label>
+                    <input type="file" id="deviceImage" name="deviceImage" accept="image/*">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>2. Problembeskrivning</h3>
+                <div class="form-group">
+                    <label>Vad behöver lagas?</label>
+                    <select id="issue" name="issue" required>
+                        <option value="Screen">Skärmbyte</option>
+                        <option value="Battery">Batteribyte</option>
+                        <option value="Other">Annat</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>3. Betalning & Kontakt</h3>
+                <div class="form-group">
+                    <label>Betalningsmetod</label>
+                    <select id="payment" name="payment">
+                        <option value="store">Betala i butik</option>
+                        <option value="card" disabled>Kortbetalning (Kommer snart - Stripe)</option>
+                        <option value="paypal" disabled>PayPal (Kommer snart)</option>
+                    </select>
+                </div>
+                <div class="form-row" style="margin-top: 20px;">
+                    <div class="form-group">
+                        <label>Ditt Namn</label>
+                        <input type="text" id="name" name="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <input type="date" id="date" name="date" required style="margin-top:10px;">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>E-post (för bekräftelse)</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Boka Tid</button>
+            <p id="msg" style="text-align: center; margin-top: 20px; font-weight: bold;"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Skickar...';
+
+            // Use FormData for File Upload
+            const formData = new FormData(e.target);
+
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    body: formData // No JSON.stringify, No Content-Type (browser handles boundary)
+                });
+
+                if (res.ok) {
+                    document.getElementById('bookingForm').reset();
+                    document.getElementById('msg').style.color = 'green';
+                    document.getElementById('msg').innerHTML = 'Bokning Mottagen! <br> En bekräftelse har skickats till din e-post.';
+                } else {
+                    document.getElementById('msg').style.color = 'red';
+                    document.getElementById('msg').textContent = 'Något gick fel.';
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('msg').style.color = 'red';
+                document.getElementById('msg').textContent = 'Serverfel.';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Boka Tid';
+        });
+    </script>
+</body>
+
+</html>

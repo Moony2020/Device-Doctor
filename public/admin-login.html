@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .login-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e6f0ff;
+            /* Blue tint bg */
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-wrap">
+        <div class="login-card">
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">
+                <i class="ri-user-settings-line"></i> Admin
+            </h2>
+            <form id="loginForm">
+                <div style="margin-bottom: 15px;">
+                    <label>E-post</label>
+                    <input type="email" id="email"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Lösenord</label>
+                    <input type="password" id="password"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">
+                    Demo: mymoon676@gmail.com
+                </p>
+                <button type="submit" class="btn-hero" style="width: 100%; border-radius: 5px;">Logga In</button>
+            </form>
+            <p id="errorMsg" style="color: red; margin-top: 10px; text-align: center;"></p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" style="color: var(--primary-color);">Tillbaka till Start</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem('adminToken', data.accessToken);
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    errorMsg.textContent = 'Fel e-post eller lösenord';
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Serverfel';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datorreparation - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .page-header {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .info-text {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .mac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .mac-item img {
+            max-width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .mac-item h3 {
+            color: #d63384;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .mac-item p {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .battery-promo {
+            background: #f0f4ff;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .battery-promo h2 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .battery-promo i {
+            font-size: 3rem;
+            color: #d63384;
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><i class="ri-arrow-left-line"></i> Tillbaka</a>
+            <h1>MacBook & Datorer</h1>
+            <div style="width: 50px;"></div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Express MacBook Repairs</h1>
+        <a href="#models" class="btn-hero" style="background:#d63384; border:none; color:white;">Välj din Mac</a>
+    </div>
+
+    <div class="section-container">
+        <div class="info-text">
+            <h3>MacBook Repair Center:</h3>
+            <p>ValfriMobil have a large collection of detailed repair center for MacBook, laptops, and other computer
+                devices. Vi löser allt från tangentbordsbyte till logikkort-reparationer.</p>
+        </div>
+
+        <!-- Battery Promo -->
+        <div class="battery-promo">
+            <i class="ri-battery-charge-line"></i>
+            <h2>Apple Mac and iMac Battery Replacement</h2>
+            <p>Datorn dör snabbt? Vi byter batteriet på dagen. Få tillbaka din batteritid idag.</p>
+        </div>
+
+        <h2 id="models" style="color:var(--secondary-color);">Välj din MacBook / Dator</h2>
+
+        <div class="mac-grid">
+            <div class="mac-item">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+                    alt="MacBook Pro">
+                <h3>MacBook Pro</h3>
+                <p>Retina 13", 15", 16"</p>
+                <button class="btn-hero" style="padding:10px 25px; font-size:0.9rem;"
+                    onclick="location.href='booking.html?device=MacBookPro'">Välj</button>
+            </div>
+            <div class="mac-item">
+                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=80"
+                    alt="MacBook Air">
+                <h3>MacBook Air</h3>
+                <p>M1, M2, Intel</p>
+                <button class="btn-hero" style="padding:10px 25px; font-size:0.9rem;"
+                    onclick="location.href='booking.html?device=MacBookAir'">Välj</button>
+            </div>
+            <div class="mac-item">
+                <img src="https://images.unsplash.com/photo-1527443195645-1133f7f28990?auto=format&fit=crop&w=400&q=80"
+                    alt="iMac">
+                <h3>iMac</h3>
+                <p>21.5", 27", 24"</p>
+                <button class="btn-hero" style="padding:10px 25px; font-size:0.9rem;"
+                    onclick="location.href='booking.html?device=iMac'">Välj</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h3>Osäker på din modell?</h3>
+            <p>Hitta serienumret på undersidan av din dator och kontakta oss.</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

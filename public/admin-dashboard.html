@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--dark-bg);
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            background: #f4f7f6;
+        }
+
+        .db-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h2 style="margin-bottom: 30px; color:white;">ValfriMobil</h2>
+            <a id="nav-stats" onclick="showSection('stats')"><i class="ri-bar-chart-line"></i> Statistik</a>
+            <a id="nav-products" class="active" onclick="showSection('products')"><i class="ri-shopping-bag-3-line"></i>
+                Produkter</a>
+            <a id="nav-bookings" onclick="showSection('bookings')"><i class="ri-calendar-check-line"></i> Bokningar</a>
+            <a href="index.html"><i class="ri-home-line"></i> Till Hemsidan</a>
+            <a href="#" onclick="logout()"><i class="ri-logout-box-line"></i> Logga Ut</a>
+        </aside>
+
+        <main class="content">
+
+            <!-- Stats Section -->
+            <div id="section-stats" class="hidden">
+                <h1 style="margin-bottom: 20px;">Översikt & Statistik</h1>
+                <div style="display: flex; gap: 20px;">
+                    <div class="db-card" style="flex:1; text-align:center;">
+                        <h3>Totalt Bokningar</h3>
+                        <p style="font-size: 3rem; color: var(--primary-color); font-weight:bold;" id="stat-count">0</p>
+                    </div>
+                    <div class="db-card" style="flex:1; text-align:center;">
+                        <h3>Est. Intäkt (ex)</h3>
+                        <p style="font-size: 3rem; color: #28a745; font-weight:bold;" id="stat-rev">0 kr</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="section-products">
+                <h1 style="margin-bottom: 20px;">Produkt Hantering</h1>
+                <div class="db-card">
+                    <h3>Lägg till Produkt</h3>
+                    <form id="addForm">
+                        <input type="text" id="name" placeholder="Namn" required>
+                        <textarea id="desc" placeholder="Beskrivning"></textarea>
+                        <input type="number" id="price" placeholder="Pris" required>
+                        <input type="text" id="cat" placeholder="Kategori (Mobil, Dator..)" required>
+                        <button type="submit" class="btn-hero"
+                            style="border-radius: 5px; padding: 10px 20px;">Spara</button>
+                        <span id="msg" style="margin-left: 10px;"></span>
+                    </form>
+                </div>
+                <div class="db-card">
+                    <h3>Alla Produkter</h3>
+                    <div id="list">Laddar...</div>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div id="section-bookings" class="hidden">
+                <h1 style="margin-bottom: 20px;">Bokningar</h1>
+                <div class="db-card">
+                    <h3>Inkomna Bokningar</h3>
+                    <div id="bookingList">Laddar...</div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('adminToken');
+        if (!token) window.location.href = 'admin-login.html';
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Navigation Logic
+        function showSection(sec) {
+            document.querySelectorAll('[id^="section-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('[id^="nav-"]').forEach(el => el.classList.remove('active'));
+
+            document.getElementById('section-' + sec).classList.remove('hidden');
+            document.getElementById('nav-' + sec).classList.add('active');
+
+            if (sec === 'products') loadProducts();
+            if (sec === 'bookings') loadBookings();
+            if (sec === 'stats') loadStats();
+        }
+
+        async function loadStats() {
+            // Re-fetch bookings to calc stats locally (simulated)
+            try {
+                const res = await fetch('/api/bookings', { headers: { 'token': 'Bearer ' + token } });
+                const data = await res.json();
+                document.getElementById('stat-count').textContent = data.length;
+                // Dummy revenue calc (e.g. 500kr per booking)
+                document.getElementById('stat-rev').textContent = (data.length * 500) + ' kr';
+            } catch (e) { }
+        }
+
+        // Products Logic
+        async function loadProducts() {
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                const list = document.getElementById('list');
+                list.innerHTML = data.map(p => `
+                    <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+                        <span><strong>${p.name}</strong> (${p.price} kr)</span>
+                        <button onclick="delProduct('${p._id}')" style="color:red; border:none; background:none; cursor:pointer;">Ta Bort</button>
+                    </div>
+                `).join('');
+            } catch (e) { console.error(e); }
+        }
+
+        document.getElementById('addForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const body = {
+                name: document.getElementById('name').value,
+                description: document.getElementById('desc').value,
+                price: document.getElementById('price').value,
+                category: document.getElementById('cat').value,
+                image: 'images/img1.png'
+            };
+
+            await fetch('/api/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'token': 'Bearer ' + token },
+                body: JSON.stringify(body)
+            });
+            document.getElementById('msg').textContent = 'Sparad!';
+            loadProducts();
+        });
+
+        async function delProduct(id) {
+            if (!confirm('Ta bort?')) return;
+            await fetch('/api/products/' + id, { method: 'DELETE', headers: { 'token': 'Bearer ' + token } });
+            loadProducts();
+        }
+
+        // Bookings Logic
+        async function loadBookings() {
+            try {
+                const res = await fetch('/api/bookings', {
+                    headers: { 'token': 'Bearer ' + token }
+                });
+                const data = await res.json();
+                const list = document.getElementById('bookingList');
+                if (!data || data.length === 0) {
+                    list.innerHTML = '<p>Inga bokningar än.</p>';
+                    return;
+                }
+
+                list.innerHTML = data.map(b => `
+                    <div style="padding:15px; border-bottom:1px solid #eee; background: #fafafa; margin-bottom: 10px; border-radius:5px;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <h4 style="color:var(--primary-color);">${b.deviceType} - ${b.brand} (${b.issue})</h4>
+                            <small>${new Date(b.date).toLocaleString()}</small>
+                        </div>
+                        <p><strong>Kund:</strong> ${b.customerName} | ${b.phone} | ${b.email}</p>
+                        ${b.imageUrl ? `<a href="${b.imageUrl}" target="_blank" style="color:blue; display:block; margin:5px 0;">Se Bild på Skada</a>` : ''}
+                        <button onclick="delBooking('${b._id}')" style="margin-top:10px; padding:5px 10px; background:#dc3545; color:white; border:none; border-radius:3px; cursor:pointer;">Radera Bokning</button>
+                    </div>
+                `).join('');
+            } catch (e) { console.error(e); }
+        }
+
+        async function delBooking(id) {
+            if (!confirm('Radera bokning?')) return;
+            await fetch('/api/bookings/' + id, { method: 'DELETE', headers: { 'token': 'Bearer ' + token } });
+            loadBookings();
+        }
+
+        // Init
+        loadStats();
+    </script>
+</body>
+
+</html>

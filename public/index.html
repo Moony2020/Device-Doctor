@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValfriMobil - Reparation & Service</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="contact.html">Kontakta Oss</a>
+        <a href="stores.html">Hitta Butik</a>
+        <a href="business.html">Företag</a>
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <nav class="navbar">
+
+            <div class="hamburger">
+                <i class="ri-menu-line"></i>
+            </div>
+
+            <a href="/" class="logo">
+                <i class="ri-smartphone-line"></i>
+                ValfriMobil
+            </a>
+
+            <!-- Mega Menu Container -->
+            <ul class="nav-links desktop-only" style="display: flex; gap: 30px; list-style:none; margin: 0 20px;">
+                <li class="dropdown-wrapper">
+                    <a href="repair.html" style="font-weight:600; cursor:pointer; padding: 20px 0;">Reparationer &
+                        Service <i class="ri-arrow-down-s-line"></i></a>
+                    <!-- MEGA MENU -->
+                    <div class="mega-menu">
+                        <div class="mega-column">
+                            <h4>iPhone</h4>
+                            <a href="repair-phones.html?brand=Apple">iPhone 16 Series</a>
+                            <a href="repair-phones.html?brand=Apple">iPhone 15 Series</a>
+                            <a href="repair-phones.html?brand=Apple">iPhone 14 Series</a>
+                            <a href="repair-phones.html?brand=Apple">iPhone 13 Series</a>
+                            <a href="repair-phones.html?brand=Apple">iPhone 12 Series</a>
+                            <a href="repair-phones.html?brand=Apple">iPhone 11 Series</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Samsung</h4>
+                            <a href="repair-phones.html?brand=Samsung">Galaxy S24 Series</a>
+                            <a href="repair-phones.html?brand=Samsung">Galaxy S23 Series</a>
+                            <a href="repair-phones.html?brand=Samsung">Galaxy Z Fold/Flip</a>
+                            <a href="repair-phones.html?brand=Samsung">Galaxy A Series</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>iPad</h4>
+                            <a href="repair-tablets.html?device=iPadPro">iPad Pro</a>
+                            <a href="repair-tablets.html?device=iPadAir">iPad Air</a>
+                            <a href="repair-tablets.html?device=iPadMini">iPad Mini</a>
+                            <a href="repair-tablets.html?device=iPadBase">iPad (Standard)</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Andra Enheter</h4>
+                            <a href="repair-phones.html?brand=Google">Google Pixel</a>
+                            <a href="repair-phones.html?brand=OnePlus">OnePlus</a>
+                            <a href="repair-laptops.html?device=MacBook">MacBook</a>
+                            <a href="repair-phones.html?device=Watch">Apple Watch</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a href="refurbished.html" style="font-weight:600;">Renoverade Enheter</a></li>
+
+                <li class="dropdown-wrapper">
+                    <a href="#" style="font-weight:600; cursor:pointer; padding: 20px 0;">Om Oss <i
+                            class="ri-arrow-down-s-line"></i></a>
+                    <div class="mega-menu" style="left: auto; width: 600px;"> <!-- Smaller Mega for About -->
+                        <div class="mega-column">
+                            <h4>Information</h4>
+                            <a href="protect.html">Vår Garanti</a>
+                            <a href="#">Hållbarhet</a>
+                            <a href="#">Karriär</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Köp & Villkor</h4>
+                            <a href="#">Integritetspolicy</a>
+                            <a href="#">Köpvillkor</a>
+                            <a href="#">Studentrabatt</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="search-container">
+                <input type="text" placeholder="Sök...">
+                <i class="ri-search-line"></i>
+            </div>
+
+            <div class="nav-icons">
+                <a href="booking.html" class="icon-item"><i class="ri-calendar-event-line"></i></a>
+                <a href="#" class="icon-item">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="admin-login.html" class="icon-item">
+                    <i class="ri-user-line"></i>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+            <div class="close-menu"><i class="ri-close-line"></i></div>
+            <a href="repair.html">Reparera Enhet</a>
+            <a href="refurbished.html">Köp Renoverat</a>
+            <a href="protect.html">Skydda Enhet</a>
+            <a href="booking.html">Boka Tid</a>
+            <a href="admin-login.html">Logga In</a>
+        </div>
+    </header>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider">
+        <div class="slide active"
+            style="background-image: url('https://images.unsplash.com/photo-1596742578550-98e3b1236531?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Fixes in a <span>flash</span>,<br>repair your device today!</h1>
+                    <p>Mobil, Surfplatta, Datorer.</p>
+                    <a href="repair-phones.html" class="btn-hero">Starta Reparation</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Experter på <span>Datorer</span></h1>
+                    <p>Vi lagar din laptop snabbt och säkert.</p>
+                    <a href="repair-laptops.html" class="btn-hero">Laga Dator</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay">
+                <div class="slide-content">
+                    <h1>Sök <span>Renoverat</span></h1>
+                    <p>Bra för plånboken, bra för miljön.</p>
+                    <a href="refurbished.html" class="btn-hero">Köp Nu</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </section>
+
+    <!-- 3 Cards -->
+    <section class="three-cards-section">
+        <div class="cards-container">
+            <div class="action-card">
+                <i class="ri-tools-line card-icon repair-icon"></i>
+                <h3>Reparera</h3>
+                <button onclick="location.href='repair-phones.html'" class="btn-card btn-repair">Fixa Nu</button>
+            </div>
+            <div class="action-card">
+                <i class="ri-arrow-left-right-line card-icon replace-icon"></i>
+                <h3>Ersätt</h3>
+                <button onclick="location.href='refurbished.html'" class="btn-card btn-replace">Köp Renoverat</button>
+            </div>
+            <div class="action-card">
+                <i class="ri-shield-check-line card-icon protect-icon"></i>
+                <h3>Skydda</h3>
+                <button onclick="location.href='protect.html'" class="btn-card btn-protect">Läs Mer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Devices Section -->
+    <section class="devices-section">
+        <h2 class="section-heading">Enheter vi reparerar</h2>
+        <div class="devices-grid">
+            <div class="device-col">
+                <div class="device-img-real text-overlay-container"
+                    style="background-image: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <h3>Telefoner</h3>
+                <button onclick="location.href='repair-phones.html'" class="btn-device">Välj Modell</button>
+            </div>
+            <div class="device-col">
+                <div class="device-img-real"
+                    style="background-image: url('https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <h3>Surfplattor</h3>
+                <button onclick="location.href='repair-tablets.html'" class="btn-device">Välj Modell</button>
+            </div>
+            <div class="device-col">
+                <div class="device-img-real"
+                    style="background-image: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <h3>Datorer</h3>
+                <button onclick="location.href='repair-laptops.html'" class="btn-device">Välj Modell</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color:white; font-size:1.5rem; margin-bottom: 20px;">ValfriMobil</h4>
+                <p style="color:#ccc;">Din expert på mobilreparation i Sverige.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ & Kontakt</a></li>
+                    <li><a href="#">Hitta Butik</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="protect.html">Vår Garanti</a></li>
+                    <li><a href="#">Integritetspolicy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile Menu Logic
+        const mobMenu = document.querySelector('.mobile-menu-overlay');
+        const ham = document.querySelector('.hamburger');
+        const closeBtn = document.querySelector('.close-menu');
+
+        if (ham) {
+            ham.addEventListener('click', () => {
+                mobMenu.classList.add('active');
+            });
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                mobMenu.classList.remove('active');
+            });
+        }
+
+        // Slider Logic
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+        dots.forEach((dot, idx) => dot.addEventListener('click', () => showSlide(idx)));
+    </script>
+</body>
+
+</html>

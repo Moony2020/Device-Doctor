@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPad Reparation - ValfriMobil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .page-header {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .info-text {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* iPad Specific Grid */
+        .ipad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .ipad-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .ipad-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-select {
+            border: 1px solid #d63384;
+            color: #d63384;
+            background: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-select:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Model Search */
+        .model-search {
+            background: #fafafa;
+            padding: 40px;
+            margin: 60px 0;
+            border-radius: 10px;
+        }
+
+        .model-search h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* FAQs */
+        .faq-section {
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><i class="ri-arrow-left-line"></i> Tillbaka</a>
+            <h1>iPad Reparation</h1>
+            <div style="width: 50px;"></div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Express iPad Repairs</h1>
+        <a href="#models" class="btn-hero" style="background:#d63384; border:none;">Välj din enhet</a>
+    </div>
+
+    <div class="section-container">
+        <div class="info-text">
+            <h3>iPad Reparation Service:</h3>
+            <p>ValfriMobil are the expert for iPad repairs from cracked screen to water damage and battery replacement.
+                Vi hanterar alla modeller snabbt och säkert så att du kan återgå till att använda din platta.</p>
+        </div>
+
+        <h2 id="models" style="color:var(--secondary-color); margin-bottom: 40px;">Välj din iPad</h2>
+
+        <div class="ipad-grid">
+            <div class="ipad-item">
+                <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=300&q=80"
+                    alt="iPad Mini">
+                <h3>iPad Mini</h3>
+                <button class="btn-select" onclick="location.href='booking.html?device=iPadMini'">Välj</button>
+            </div>
+            <div class="ipad-item">
+                <img src="https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=300&q=80"
+                    alt="iPad">
+                <h3>iPad (Standard)</h3>
+                <button class="btn-select" onclick="location.href='booking.html?device=iPad'">Välj</button>
+            </div>
+            <div class="ipad-item">
+                <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=300&q=80"
+                    alt="iPad Air">
+                <h3>iPad Air</h3>
+                <button class="btn-select" onclick="location.href='booking.html?device=iPadAir'">Välj</button>
+            </div>
+            <div class="ipad-item">
+                <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=300&q=80"
+                    alt="iPad Pro">
+                <h3>iPad Pro</h3>
+                <button class="btn-select" onclick="location.href='booking.html?device=iPadPro'">Välj</button>
+            </div>
+        </div>
+
+        <!-- Model Search -->
+        <div class="model-search">
+            <h3>Inte säker på vilken iPad du har?</h3>
+            <p>Ange modellnummer (t.ex. A1234) som du hittar på baksidan.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Modellnummer">
+                <button>Sök</button>
+            </div>
+            <p><small style="color:#d63384; cursor:pointer;">Hur hittar jag mitt modellnummer?</small></p>
+        </div>
+
+        <!-- FAQs -->
+        <div class="faq-section">
+            <h2 style="text-align:center; margin-bottom:30px; color:#d63384;">Vanliga Frågor om iPad Reparation</h2>
+            <div class="faq-item">
+                <h4>Hur lång tid tar ett skärmbyte?</h4>
+                <p>De flesta iPad-skärmbyten är klara inom 24-48 timmar beroende på modell.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Försvinner min garanti?</h4>
+                <p>Vi använder delar av högsta kvalitet och lämnar alltid 12 månaders garanti på vårt arbete.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Kan ni laga böjda iPads?</h4>
+                <p>Ja, vi kan ofta rikta böjda chassin i samband med skärmbyte, men kom in till butik för bedömning.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
